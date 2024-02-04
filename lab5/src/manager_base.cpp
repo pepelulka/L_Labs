@@ -78,7 +78,7 @@ void HeartBeatManager::Routine() {
     }
     while (true) {
         std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
-        for (auto p : nodes) {
+        for (const auto& p : nodes) {
             if (unavailable.find(p.first) != unavailable.end()) {
                 continue;
             }
@@ -147,7 +147,7 @@ void Frontend::Routine() {
     std::cout << "$ ";
     while (std::getline(std::cin, line)) {
         std::vector<std::string> res = results.Get();
-        for (auto i : res) {
+        for (const auto& i : res) {
             std::cout << i << std::endl;
         }
         std::stringstream ss(line);
