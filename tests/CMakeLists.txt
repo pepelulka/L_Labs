@@ -25,3 +25,6 @@ add_executable(lab4_test1 lab4_test1.cpp)
 add_executable(lab4_test2 lab4_test2.cpp)
 target_link_libraries(lab4_test1 GTest::GTest lab4_lib1)
 target_link_libraries(lab4_test2 GTest::GTest lab4_lib2)
+
+add_executable(cp_test cp_test.cpp)
+target_link_libraries(cp_test PRIVATE GTest::GTest alloc1 alloc2)
