@@ -114,7 +114,7 @@ struct ThreadArgs {
 
 static void *ThreadRoutine(void *args) {
     ThreadArgs* data = (ThreadArgs*)args;
-    for (auto i : data->task) {
+    for (const auto& i : data->task) {
         (*data->result)[i] = Toeplitz((*data->source)[i]);
     }
     return nullptr;
