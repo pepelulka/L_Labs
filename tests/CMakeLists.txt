@@ -18,3 +18,6 @@ target_link_libraries(lab1_test PRIVATE GTest::GTest lab1_lib)
 
 add_executable(lab2_test lab2_test.cpp)
 target_link_libraries(lab2_test PRIVATE GTest::GTest lab2_lib)
+
+add_executable(lab3_test lab3_test.cpp)
+target_link_libraries(lab3_test PRIVATE GTest::GTest lab3_lib)
