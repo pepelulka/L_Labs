@@ -67,7 +67,7 @@ Allocator::Allocator(size_t _size) {
     PowOf2.resize(N + 1);
     PowOf2[0] = 1;
     for (size_t i = 1; i < N + 1; i++) {
-        PowOf2[i] = PowOf2[i - 1];
+        PowOf2[i] = PowOf2[i - 1] * 2;
     }
 }
 
