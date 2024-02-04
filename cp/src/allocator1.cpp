@@ -43,10 +43,10 @@ void Allocator::Free(void *block) {
     for (auto it = blocks.begin(); it != blocks.end(); it++) {
         size_t sz = it->size;
         char* start = it->start, *end = it->start + sz;
-        if (end == (char*)block) {
+        if (end == static_cast<char*>(block)) {
             backMerge = it;
         }
-        if (start == ((char*)block + size)) {
+        if (start == (static_cast<char*>(block) + size)) {
             forwardMerge = it;
         }
     }
@@ -60,14 +60,14 @@ void Allocator::Free(void *block) {
         auto it = blocks.erase(backMerge);
         blocks.insert(it, newBlock);
     } else if (forwardMerge != blocks.end()) {
-        Block newBlock = {size + forwardMerge->size, (char*)block };
+        Block newBlock = {size + forwardMerge->size, static_cast<char*>(block) };
         auto it = blocks.erase(forwardMerge);
         blocks.insert(it, newBlock);
     } else {
-        Block newBlock = { size, (char*)block };
+        Block newBlock = { size, static_cast<char*>(block) };
         auto place = blocks.end();
         for (auto it = blocks.begin(); it != blocks.end(); it++) {
-            if (it->start > (char*)block) {
+            if (it->start > (static_cast<char*>(block))) {
                 place = it;
                 break;
             }
